@@ -127,7 +127,6 @@ Key Requirements:
 4. ${selectedSection.considerations}
 5. Purpose: ${purpose || '[Add specific purpose]'}
 6. Target Audience: ${targetAudience || '[Add target audience]'}
-6. Target Audience: ${targetAudience || '[Add target audience]'}
 
 Refinement Focus Areas:
 - Improve visual hierarchy and layout
@@ -176,6 +175,7 @@ Key Requirements:
 3. ${selectedStyle}
 4. ${selectedSection.considerations}
 5. Purpose: ${purpose || '[Add specific purpose]'}
+6. Target Audience: ${targetAudience || '[Add target audience]'}
 
 Additional Specifications:
 - Ensure the design is responsive and works well on all devices
@@ -183,7 +183,6 @@ Additional Specifications:
 - Incorporate smooth animations and transitions where appropriate
 - Follow current web accessibility guidelines
 - Keep the layout clean and professional
-- Consider dark/light mode compatibility
 - Optimize for fast loading and performance
 
 Please provide specific details about:

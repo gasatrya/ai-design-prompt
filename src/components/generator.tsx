@@ -8,8 +8,14 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { Input } from '@/components/ui/input'
 import { useState, useMemo } from 'react'
-import { sections, styles, generatePrompt, generateRefinementPrompt } from '@/lib/prompt-utils'
+import {
+  sections,
+  styles,
+  generatePrompt,
+  generateRefinementPrompt,
+} from '@/lib/prompt-utils'
 
 const PromptGenerator = () => {
   const [section, setSection] = useState<keyof typeof sections>('hero')
@@ -18,14 +24,38 @@ const PromptGenerator = () => {
   const [useTailwind, setUseTailwind] = useState(false)
   const [isRefinement, setIsRefinement] = useState(false)
   const [currentIssues, setCurrentIssues] = useState('')
-  const [websiteType, setWebsiteType] = useState('freelance')
+  const [websiteType, setWebsiteType] = useState('')
   const [targetAudience, setTargetAudience] = useState('')
 
   const generatedPrompt = useMemo(() => {
     return isRefinement
-      ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues, websiteType, targetAudience)
-      : generatePrompt(section, style, purpose, useTailwind, websiteType, targetAudience)
-  }, [isRefinement, section, style, purpose, useTailwind, currentIssues, websiteType, targetAudience])
+      ? generateRefinementPrompt(
+          section,
+          style,
+          purpose,
+          useTailwind,
+          currentIssues,
+          websiteType,
+          targetAudience
+        )
+      : generatePrompt(
+          section,
+          style,
+          purpose,
+          useTailwind,
+          websiteType,
+          targetAudience
+        )
+  }, [
+    isRefinement,
+    section,
+    style,
+    purpose,
+    useTailwind,
+    currentIssues,
+    websiteType,
+    targetAudience,
+  ])
 
   return (
     <Card className='w-full max-w-2xl'>
@@ -35,7 +65,12 @@ const PromptGenerator = () => {
       <CardContent className='space-y-4'>
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Select Section</label>
-          <Select value={section} onValueChange={(value) => setSection(value as keyof typeof sections)}>
+          <Select
+            value={section}
+            onValueChange={(value) =>
+              setSection(value as keyof typeof sections)
+            }
+          >
             <SelectTrigger>
               <SelectValue placeholder='Choose section...' />
             </SelectTrigger>
@@ -59,7 +94,10 @@ const PromptGenerator = () => {
 
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Design Style</label>
-          <Select value={style} onValueChange={(value) => setStyle(value as keyof typeof styles)}>
+          <Select
+            value={style}
+            onValueChange={(value) => setStyle(value as keyof typeof styles)}
+          >
             <SelectTrigger>
               <SelectValue placeholder='Choose style...' />
             </SelectTrigger>
@@ -90,7 +128,7 @@ const PromptGenerator = () => {
 
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Website Type</label>
-          <Textarea
+          <Input
             placeholder='e.g., freelance, e-commerce, portfolio, corporate...'
             value={websiteType}
             onChange={(e) => setWebsiteType(e.target.value)}
@@ -124,7 +162,9 @@ const PromptGenerator = () => {
 
         {isRefinement && (
           <div className='space-y-2'>
-            <label className='text-sm font-medium'>Current Issues/Problems</label>
+            <label className='text-sm font-medium'>
+              Current Issues/Problems
+            </label>
             <Textarea
               placeholder='Describe current issues with the component...'
               value={currentIssues}
