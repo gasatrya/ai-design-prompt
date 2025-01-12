@@ -107,7 +107,8 @@ export const generateRefinementPrompt = (
   purpose: string,
   useTailwind: boolean,
   currentIssues: string,
-  websiteType: string
+  websiteType: string,
+  targetAudience: string
 ) => {
   const selectedSection = sections[section]
   const selectedStyle = styles[style]
@@ -125,6 +126,8 @@ Key Requirements:
 3. ${selectedStyle}
 4. ${selectedSection.considerations}
 5. Purpose: ${purpose || '[Add specific purpose]'}
+6. Target Audience: ${targetAudience || '[Add target audience]'}
+6. Target Audience: ${targetAudience || '[Add target audience]'}
 
 Refinement Focus Areas:
 - Improve visual hierarchy and layout
@@ -156,7 +159,8 @@ export const generatePrompt = (
   style: keyof typeof styles,
   purpose: string,
   useTailwind: boolean,
-  websiteType: string
+  websiteType: string,
+  targetAudience: string
 ) => {
   const selectedSection = sections[section]
   const selectedStyle = styles[style]

@@ -19,12 +19,13 @@ const PromptGenerator = () => {
   const [isRefinement, setIsRefinement] = useState(false)
   const [currentIssues, setCurrentIssues] = useState('')
   const [websiteType, setWebsiteType] = useState('freelance')
+  const [targetAudience, setTargetAudience] = useState('')
 
   const generatedPrompt = useMemo(() => {
     return isRefinement
-      ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues, websiteType)
-      : generatePrompt(section, style, purpose, useTailwind, websiteType)
-  }, [isRefinement, section, style, purpose, useTailwind, currentIssues, websiteType])
+      ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues, websiteType, targetAudience)
+      : generatePrompt(section, style, purpose, useTailwind, websiteType, targetAudience)
+  }, [isRefinement, section, style, purpose, useTailwind, currentIssues, websiteType, targetAudience])
 
   return (
     <Card className='w-full max-w-2xl'>
@@ -94,6 +95,16 @@ const PromptGenerator = () => {
             value={websiteType}
             onChange={(e) => setWebsiteType(e.target.value)}
             className='h-10'
+          />
+        </div>
+
+        <div className='space-y-2'>
+          <label className='text-sm font-medium'>Target Audience</label>
+          <Textarea
+            placeholder='e.g., young professionals, enterprise clients, creative agencies...'
+            value={targetAudience}
+            onChange={(e) => setTargetAudience(e.target.value)}
+            className='h-20'
           />
         </div>
 
