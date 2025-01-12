@@ -83,7 +83,7 @@ const PromptGenerator = () => {
           <Checkbox
             id='tailwind'
             checked={useTailwind}
-            onCheckedChange={setUseTailwind}
+            onCheckedChange={(checked) => setUseTailwind(checked === true)}
           />
           <label
             htmlFor='tailwind'
