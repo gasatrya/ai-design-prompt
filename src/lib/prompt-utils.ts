@@ -106,7 +106,8 @@ export const generateRefinementPrompt = (
   style: keyof typeof styles,
   purpose: string,
   useTailwind: boolean,
-  currentIssues: string
+  currentIssues: string,
+  websiteType: string
 ) => {
   const selectedSection = sections[section]
   const selectedStyle = styles[style]
@@ -114,7 +115,7 @@ export const generateRefinementPrompt = (
   let prompt = `Refine and improve an existing ${style.replace(
     '-',
     ' '
-  )} ${section} section for my freelance website. The current issues are:
+  )} ${section} section for my ${websiteType} website. The current issues are:
   
 ${currentIssues}
 
@@ -154,7 +155,8 @@ export const generatePrompt = (
   section: keyof typeof sections,
   style: keyof typeof styles,
   purpose: string,
-  useTailwind: boolean
+  useTailwind: boolean,
+  websiteType: string
 ) => {
   const selectedSection = sections[section]
   const selectedStyle = styles[style]
@@ -162,7 +164,7 @@ export const generatePrompt = (
   let prompt = `Design a ${style.replace(
     '-',
     ' '
-  )} ${section} section for my freelance website that is both aesthetically pleasing and functional.
+  )} ${section} section for my ${websiteType} website that is both aesthetically pleasing and functional.
 
 Key Requirements:
 1. ${selectedSection.base}

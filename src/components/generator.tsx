@@ -18,12 +18,13 @@ const PromptGenerator = () => {
   const [useTailwind, setUseTailwind] = useState(false)
   const [isRefinement, setIsRefinement] = useState(false)
   const [currentIssues, setCurrentIssues] = useState('')
+  const [websiteType, setWebsiteType] = useState('freelance')
 
   const generatedPrompt = useMemo(() => {
     return isRefinement
-      ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues)
-      : generatePrompt(section, style, purpose, useTailwind)
-  }, [isRefinement, section, style, purpose, useTailwind, currentIssues])
+      ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues, websiteType)
+      : generatePrompt(section, style, purpose, useTailwind, websiteType)
+  }, [isRefinement, section, style, purpose, useTailwind, currentIssues, websiteType])
 
   return (
     <Card className='w-full max-w-2xl'>
@@ -83,6 +84,16 @@ const PromptGenerator = () => {
             value={purpose}
             onChange={(e) => setPurpose(e.target.value)}
             className='h-20'
+          />
+        </div>
+
+        <div className='space-y-2'>
+          <label className='text-sm font-medium'>Website Type</label>
+          <Textarea
+            placeholder='e.g., freelance, e-commerce, portfolio, corporate...'
+            value={websiteType}
+            onChange={(e) => setWebsiteType(e.target.value)}
+            className='h-10'
           />
         </div>
 
