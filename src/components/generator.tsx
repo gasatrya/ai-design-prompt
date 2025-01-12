@@ -26,7 +26,7 @@ const PromptGenerator = () => {
       <CardContent className='space-y-4'>
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Select Section</label>
-          <Select value={section} onValueChange={setSection}>
+          <Select value={section} onValueChange={(value) => setSection(value as keyof typeof sections)}>
             <SelectTrigger>
               <SelectValue placeholder='Choose section...' />
             </SelectTrigger>
@@ -50,7 +50,7 @@ const PromptGenerator = () => {
 
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Design Style</label>
-          <Select value={style} onValueChange={setStyle}>
+          <Select value={style} onValueChange={(value) => setStyle(value as keyof typeof styles)}>
             <SelectTrigger>
               <SelectValue placeholder='Choose style...' />
             </SelectTrigger>
