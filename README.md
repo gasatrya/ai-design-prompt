@@ -5,7 +5,9 @@ This is a React-based AI prompt generator designed to help web designers and dev
 ---
 
 ## **Purpose**
+
 The purpose of this app is to:
+
 1. **Streamline the design process**: Generate detailed prompts for creating new website components or refining existing ones.
 2. **Improve AI output quality**: Provide structured and specific inputs to AI tools for better design suggestions.
 3. **Save time**: Automate the creation of design prompts, reducing manual effort.
@@ -13,6 +15,7 @@ The purpose of this app is to:
 ---
 
 ## **How It Works**
+
 1. **Select a Section**: Choose the website section you want to design or refine (e.g., hero, about, services).
 2. **Choose a Style**: Pick a design style (e.g., modern-minimal, bold-creative).
 3. **Specify Purpose**: Describe the purpose or goals of the section (e.g., "increase conversions," "improve user engagement").
@@ -23,6 +26,7 @@ The purpose of this app is to:
 ---
 
 ## **Features**
+
 - **Dynamic Inputs**: Customize prompts with inputs like website type, target audience, and design constraints.
 - **Refinement Mode**: Generate prompts for improving existing designs by specifying current issues.
 - **Tailwind CSS Support**: Include Tailwind-specific instructions for developers using the framework.
@@ -31,9 +35,10 @@ The purpose of this app is to:
 ---
 
 ## **How to Use**
+
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/gasatrya/ai-design-prompt.git
    ```
 2. **Install Dependencies**:
    ```bash
@@ -49,7 +54,9 @@ The purpose of this app is to:
 ---
 
 ## **Example Prompts**
+
 ### **New Design Prompt**
+
 ```
 Design a modern-minimal hero section for my freelance website that is both aesthetically pleasing and functional.
 
@@ -63,6 +70,7 @@ Key Requirements:
 ```
 
 ### **Refinement Prompt**
+
 ```
 Refine and improve an existing bold-creative about section for my portfolio website. The current issues are:
 - The layout feels cluttered.
@@ -81,6 +89,7 @@ Key Requirements:
 ---
 
 ## **Technologies Used**
+
 - **React**: Frontend framework for building the UI.
 - **TypeScript**: Adds type safety and improves code quality.
 - **Vite**: Fast build tool for modern web development.
@@ -90,7 +99,9 @@ Key Requirements:
 ---
 
 ## **Contributing**
+
 Contributions are welcome! If you'd like to improve this app:
+
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
 3. Submit a pull request with a detailed description of your changes.
@@ -98,4 +109,5 @@ Contributions are welcome! If you'd like to improve this app:
 ---
 
 ## **License**
+
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
