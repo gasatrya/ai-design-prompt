@@ -8,8 +8,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-import { useState } from 'react'
-import { sections, styles, generatePrompt } from '@/lib/prompt-utils'
+import { useState, useMemo } from 'react'
+import { sections, styles, generatePrompt, generateRefinementPrompt } from '@/lib/prompt-utils'
 
 const PromptGenerator = () => {
   const [section, setSection] = useState<keyof typeof sections>('hero')
@@ -18,6 +18,12 @@ const PromptGenerator = () => {
   const [useTailwind, setUseTailwind] = useState(false)
   const [isRefinement, setIsRefinement] = useState(false)
   const [currentIssues, setCurrentIssues] = useState('')
+
+  const generatedPrompt = useMemo(() => {
+    return isRefinement
+      ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues)
+      : generatePrompt(section, style, purpose, useTailwind)
+  }, [isRefinement, section, style, purpose, useTailwind, currentIssues])
 
   return (
     <Card className='w-full max-w-2xl'>
@@ -123,9 +129,7 @@ const PromptGenerator = () => {
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Generated Prompt</label>
           <div className='p-4 bg-gray-50 rounded-lg text-sm whitespace-pre-wrap'>
-            {isRefinement
-              ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues)
-              : generatePrompt(section, style, purpose, useTailwind)}
+            {generatedPrompt}
           </div>
         </div>
       </CardContent>
