@@ -16,7 +16,8 @@ const PromptGenerator = () => {
   const [style, setStyle] = useState<keyof typeof styles>('modern-minimal')
   const [purpose, setPurpose] = useState('')
   const [useTailwind, setUseTailwind] = useState(false)
-
+  const [isRefinement, setIsRefinement] = useState(false)
+  const [currentIssues, setCurrentIssues] = useState('')
 
   return (
     <Card className='w-full max-w-2xl'>
@@ -81,6 +82,32 @@ const PromptGenerator = () => {
 
         <div className='flex items-center space-x-2'>
           <Checkbox
+            id='refinement'
+            checked={isRefinement}
+            onCheckedChange={(checked) => setIsRefinement(checked === true)}
+          />
+          <label
+            htmlFor='refinement'
+            className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+          >
+            Refine Existing Component
+          </label>
+        </div>
+
+        {isRefinement && (
+          <div className='space-y-2'>
+            <label className='text-sm font-medium'>Current Issues/Problems</label>
+            <Textarea
+              placeholder='Describe current issues with the component...'
+              value={currentIssues}
+              onChange={(e) => setCurrentIssues(e.target.value)}
+              className='h-20'
+            />
+          </div>
+        )}
+
+        <div className='flex items-center space-x-2'>
+          <Checkbox
             id='tailwind'
             checked={useTailwind}
             onCheckedChange={(checked) => setUseTailwind(checked === true)}
@@ -96,7 +123,9 @@ const PromptGenerator = () => {
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Generated Prompt</label>
           <div className='p-4 bg-gray-50 rounded-lg text-sm whitespace-pre-wrap'>
-            {generatePrompt(section, style, purpose, useTailwind)}
+            {isRefinement
+              ? generateRefinementPrompt(section, style, purpose, useTailwind, currentIssues)
+              : generatePrompt(section, style, purpose, useTailwind)}
           </div>
         </div>
       </CardContent>

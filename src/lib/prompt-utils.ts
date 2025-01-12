@@ -101,6 +101,55 @@ export const styles = {
     'Utilize refined typography, sophisticated colors, and premium-feeling spacing.',
 }
 
+export const generateRefinementPrompt = (
+  section: keyof typeof sections,
+  style: keyof typeof styles,
+  purpose: string,
+  useTailwind: boolean,
+  currentIssues: string
+) => {
+  const selectedSection = sections[section]
+  const selectedStyle = styles[style]
+
+  let prompt = `Refine and improve an existing ${style.replace(
+    '-',
+    ' '
+  )} ${section} section for my freelance website. The current issues are:
+  
+${currentIssues}
+
+Key Requirements:
+1. ${selectedSection.base}
+2. ${selectedSection.elements}
+3. ${selectedStyle}
+4. ${selectedSection.considerations}
+5. Purpose: ${purpose || '[Add specific purpose]'}
+
+Refinement Focus Areas:
+- Improve visual hierarchy and layout
+- Enhance user experience and interaction
+- Optimize for better performance
+- Increase accessibility and responsiveness
+- Modernize the design while maintaining brand identity
+- Address specific issues mentioned above`
+
+  if (useTailwind) {
+    prompt += `
+
+Tailwind CSS Refinement:
+- Review and optimize existing Tailwind classes
+- Suggest improvements for:
+  • Layout structure
+  • Responsive design
+  • Color usage
+  • Typography hierarchy
+  • Animation and interaction patterns
+- Provide updated Tailwind class recommendations`
+  }
+
+  return prompt
+}
+
 export const generatePrompt = (
   section: keyof typeof sections,
   style: keyof typeof styles,
